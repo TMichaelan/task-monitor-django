@@ -1,0 +1,9 @@
+black==24.2.0
+coverage==7.4.3
+django-debug-toolbar==4.3.0
+django-extensions==3.2.3
+ipython==8.13.0
+model-bakery==1.17.0
+pylint==3.0.3
+pylint-django==2.5.5
+pytest-django==4.8.0

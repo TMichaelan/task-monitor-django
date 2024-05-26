@@ -1,0 +1,11 @@
+[MASTER]
+load-plugins=
+  pylint_django,
+  pylint.extensions.no_self_use,
+disable=
+    too-many-ancestors,
+    django-not-configured,
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+ignore-paths=.*/migrations
