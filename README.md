@@ -60,6 +60,14 @@ Redoc: http://localhost:8000/schema/redoc/
 
 ### Endpoints
 
+#### Example usage via browser
+
+Login to the admin panel: http://localhost:8000/api/admin
+
+```sh
+http://localhost:8000/api/checker/task/<task-id>/
+```
+
 #### Obtain JWT Token
 
 ```sh
