@@ -121,7 +121,6 @@ docker-compose exec app pylint **/*.py
 ```
 
 ## Project Structure
-
 ```
 task-monitor-api/
 ├── checker/
