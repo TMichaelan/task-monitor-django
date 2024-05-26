@@ -13,6 +13,11 @@ custom_user = Recipe(
 )
 
 
+@pytest.fixture(autouse=True)
+def disable_throttling(settings):
+    settings.REST_FRAMEWORK["DEFAULT_THROTTLE_CLASSES"] = []
+
+
 @pytest.fixture(name="user")
 def fixture_user():
     return custom_user.make()

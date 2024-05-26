@@ -1,8 +1,8 @@
 import csv
 import os
-from rest_framework import viewsets
 from rest_framework.response import Response
 from django.conf import settings
+from task_monitor.viewsets import RetrieveOnlyViewSet
 from .serializers import (
     TaskStatusOpenSerializer,
     TaskStatusUpdateNeededSerializer,
@@ -13,7 +13,8 @@ from .serializers import (
 from .constants import DATA_DIR, TASKS_FILE
 
 
-class TaskStatusViewSet(viewsets.ViewSet):
+# pylint: disable=arguments-renamed
+class TaskStatusViewSet(RetrieveOnlyViewSet):
     @staticmethod
     def get_task_data(task_id: int = None):
         csv_path = os.path.join(settings.BASE_DIR, DATA_DIR, TASKS_FILE)

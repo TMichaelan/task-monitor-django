@@ -105,6 +105,15 @@ curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90
 }
 ```
 
+### Rate Limiting
+The API implements rate limiting to prevent abuse. The following rate limits are applied:
+
+```sh
+'DEFAULT_THROTTLE_RATES': {
+    'task_status': '10/minute',
+}
+```
+
 ## Running Tests
 
 ```sh
@@ -122,24 +131,37 @@ docker-compose exec app pylint **/*.py
 
 ## Project Structure
 ```
-task-monitor-api/
-├── checker/
-│   ├── migrations/
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── serializers.py
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
-├── task_monitor/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── manage.py
+task-monitor-django
+├── checker
+│   ├── apps.py
+│   ├── constants.py
+│   ├── fixtures.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── serializers.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── conftest.py
+├── data
+│   └── tasks.csv
 ├── docker-compose.yml
-└── Dockerfile
+├── Dockerfile
+├── manage.py
+├── pytest.ini
+├── README.md
+├── requirements.dev.txt
+├── requirements.txt
+├── task_monitor
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── jwt.py
+│   ├── middleware.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── viewsets.py
+└── wait-for-it.sh
 ```
+
+![Build Status](https://github.com/TMichaelan/task-monitor-django/actions/workflows/ci.yml/badge.svg)
