@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Django CI
 
 on:
   push:
@@ -35,11 +35,12 @@ jobs:
       - name: Lint with pylint
         run: |
           . venv/bin/activate
-          pylint **/*.py
+          pylint checker task_monitor manage.py
 
   test:
     name: Testing
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -55,10 +56,15 @@ jobs:
           . venv/bin/activate
           pip install -r requirements.txt -r requirements.dev.txt
 
-      - name: Run tests
-        env:
-          DATABASE_URL:
-            sqlite://:memory:
+      - name: Set environment variable for testing
+        run: echo "TESTING=true" >> $GITHUB_ENV
+
+      - name: Run migrations
         run: |
           . venv/bin/activate
-          pytest --nomigrations --reuse-db
+          python manage.py migrate
+
+      - name: Run tests
+        run: |
+          . venv/bin/activate
+          pytest -vv

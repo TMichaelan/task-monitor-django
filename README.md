@@ -108,7 +108,7 @@ curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90
 ## Running Tests
 
 ```sh
-docker-compose exec app pytest
+docker-compose exec app pytest -vv
 ```
 
 ## Linting
