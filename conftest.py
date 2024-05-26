@@ -1,3 +1,5 @@
+# pylint: disable=unused-argument, unused-import
+
 import pytest
 from django.contrib.auth import get_user_model
 from model_bakery.recipe import Recipe

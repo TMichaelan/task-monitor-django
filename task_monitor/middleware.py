@@ -1,3 +1,5 @@
+# pylint: disable=no-value-for-parameter
+
 from django.conf import settings
 from request_logging.middleware import LoggingMiddleware
 
